@@ -20,5 +20,6 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-Do', self.browser.title)
         self.fail('Finish test!')
 
+
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
