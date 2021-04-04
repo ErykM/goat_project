@@ -124,13 +124,7 @@ if 'DJANGO_DEBUG_FALSE' in os.environ:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     ALLOWED_HOSTS = [os.environ['SITENAME']]
 else:
-    print('You start application in insecure mode.\n Are you sure about that */n(n for no)')
-    decision = input('Decision - ')
-    if decision.lower() == 'n':
-        global_shit += 1
-        print(global_shit)
-        import sys
-        sys.exit()
+    print('You start application in insecure mode')
     DEBUG = True
     SECRET_KEY = 'x(m+j2#9k_v34nlvj=zfd8is4xip(g9*w*5z(w2mh48oh+aouf'
     ALLOWED_HOSTS = []
