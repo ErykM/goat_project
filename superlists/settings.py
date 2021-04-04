@@ -25,7 +25,7 @@ SECRET_KEY = 'x(m+j2#9k_v34nlvj=zfd8is4xip(g9*w*5z(w2mh48oh+aouf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['134.122.91.86']
+ALLOWED_HOSTS = ['134.122.91.86', 'lists.erkm.pl']
 
 
 # Application definition
