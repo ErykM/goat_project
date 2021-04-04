@@ -1,6 +1,9 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
 # Created by https://www.toptal.com/developers/gitignore/api/python,django,pycharm,virtualenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,pycharm,virtualenv
 
+virtualenv/
 ### Django ###
 *.log
 *.pot
@@ -67,6 +70,16 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
 pytestdebug.log
 
 # Translations
