@@ -119,7 +119,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #     os.path.join(BASE_DIR, "static"),
 # )
 global_shit = 0
-if 'DJANG_DEBUG_FALSE' in os.environ:
+if 'DJANGO_DEBUG_FALSE' in os.environ:
     DEBUG = False
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     ALLOWED_HOSTS = [os.environ['SITENAME']]
