@@ -7,7 +7,7 @@ REPO_URL = 'https://github.com/ErykM/goat_project.git'
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
-    local(f'mkdir -p {site_folder}')
+    run(f'mkdir -p {site_folder}')
     with cd(site_folder):
         _get_latest_source()
         _update_virtualenv()
@@ -18,24 +18,24 @@ def deploy():
 
 def _get_latest_source():
     if exists('.git'):
-        local('git fetch')
+        run('git fetch')
     else:
-        local(f'git clone {REPO_URL} .')
+        run(f'git clone {REPO_URL} .')
 
-    current_commit = local('git log -n 1 --format=%H', capture=True)
-    local(f'git reset --hard {current_commit}')
+    current_commit = run('git log -n 1 --format=%H', capture=True)
+    run(f'git reset --hard {current_commit}')
 
 
 def _update_virtualenv():
     if not exists('virtualenv/bin/pip'):
-        local(f'python3 -m venv virtualenv')
-        local('./virtualenv/bin/pip install -r requirements.txt')
+        run(f'python3 -m venv virtualenv')
+        run('./virtualenv/bin/pip install -r requirements.txt')
 
 
 def _create_or_update_dotenv():
     append('.env', 'DJANGO_DEBUG_FALSE=y')
     append('.env', f'SITENAME={env.host}')
-    current_contents = local('cat .env')
+    current_contents = run('cat .env')
     if 'DJANGO_SECRET_KEY' not in current_contents:
         new_secret = ''.join(random.SystemRandom().choices(
             'abcdefghijklmnopqrstuvwxyz0123456789', k=50
@@ -44,10 +44,10 @@ def _create_or_update_dotenv():
 
 
 def _update_static_files():
-    local('./virtualenv/bin/python manage.py collectstatic --noinput')
+    run('./virtualenv/bin/python manage.py collectstatic --noinput')
 
 
 def _update_database():
-    local('./virtualenv/bin/python manage.py migrate --noinput')
+    run('./virtualenv/bin/python manage.py migrate --noinput')
 
 
